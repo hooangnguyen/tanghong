@@ -1,0 +1,73 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body,
+html {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background: radial-gradient(ellipse at bottom, #20161d 0%, #090a0f 100%);
+  font-family: "Segoe UI", sans-serif;
+  perspective: 800px;
+}
+
+#container {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  cursor: grab;
+}
+
+#scene {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  transform-style: preserve-3d;
+}
+
+.text-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+}
+
+.floating-text {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: clamp(18px, 5vw, 32px);
+  font-weight: bold;
+  white-space: nowrap;
+  transition: transform 0.1s ease-out;
+  pointer-events: none;
+  text-shadow: 0 0 5px #fff;
+}
+
+.particle {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.8;
+  animation: twinkle 2s infinite ease-in-out;
+}
+
+@keyframes twinkle {
+  0%,
+  100% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+
+@media (max-width: 600px) {
+  .floating-text {
+    font-size: clamp(14px, 7vw, 24px);
+  }
+}
